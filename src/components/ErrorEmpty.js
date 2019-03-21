@@ -5,7 +5,7 @@ import { Image, StyleSheet } from 'react-native';
 import { Button, Text, View } from 'native-base';
 
 
-const ErrorEmpty = ({ title, subtitle, style, onPress, showFooter = false }) => {
+const ErrorEmpty = ({ title, subtitle, style, textStyle, onPress, showFooter = false }) => {
 
 	title = isEmpty(title)? 'Nothing here my love' : title;
 	subtitle = isEmpty(subtitle)? 'Though diamonds thou art wished for' : subtitle;
@@ -21,7 +21,7 @@ const ErrorEmpty = ({ title, subtitle, style, onPress, showFooter = false }) => 
 	        </View>  
 
 			<View style={styles.titleContainer}>
-	    		<Text style={styles.title}>{title}</Text>
+	    		<Text style={[styles.title, textStyle]}>{title}</Text>
 	    		<Text style={styles.subtitle}>{subtitle}</Text>
 	        </View>  
 
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 	content: {
         paddingVertical: 30,
     	paddingHorizontal: 20,
-    	backgroundColor: '#fff',
+    	//backgroundColor: '#fff',
     },
 
     imageContainer: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 
     subtitle: {
         fontSize: 14,
-    	color: '#ccc',
+    	color: '#eee',
         textAlign: 'center'
     },
 
