@@ -2,19 +2,25 @@ const CONSTANTS = {
 	PARAMS: {},
 
 	CONFIG: {
+		APP_NAME: 'Student Trips',
 		JWT_KEY: 'token',
 	},
 
 	COLORS: {
-		PRIMARY: '#3F51B5',
+		PRIMARY: '#4ca7dc',
+		SECONDARY: '#EA724D'
 	},
 
 	ACTIONS: {
 		CREATE_USER: 'CREATE_USER',
 		UPDATE_USER: 'UPDATE_USER',
+
 	},
 
-	API_ENDPOINT: 'http://<url>/api/v1'
+	ENDPOINT: {
+		API: 'http://laxusgee.com/demo/studenttrips/api/v1',
+		FILE: 'http://laxusgee.com/demo/studenttrips/app-img'
+	},
 }
 
 //defaults

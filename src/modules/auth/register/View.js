@@ -4,22 +4,31 @@ import styles from './style';
 import { isEmpty } from 'src/utils';
 import Auth from 'src/providers/Auth';
 import CONSTANTS from 'src/App.constants';
-import Modal from "src/components/AppModal";
 import ButtonLoading from 'src/components/ButtonLoading';
 
-import { AsyncStorage, Image, TouchableOpacity  } from 'react-native';
+import { AsyncStorage, TouchableOpacity  } from 'react-native';
 import { Button, Container, Content, Label, Icon, Input, Item, Text, Toast, View } from 'native-base';
 
 const  jwt_decode = require('jwt-decode');
 
-class Login extends Component {
+class Register extends Component {
 
 	state = {
+		first_name: 'frodo',
+		last_name: 'baggins',
+		phone: '08111111111',
 		email: 'frodo@yahoo.com',
 		password: '1234567890',
+		matric_no: '1234567890',
 	    loading: false,
 	    showPassword: false,
-	    showPasswordModal : false
+	};
+
+	static navigationOptions = ({ navigation }) => {
+		return {
+			headerTintColor: "#fff",
+			headerStyle: styles.headerBar,
+		}
 	};
 
 	componentDidMount(){
@@ -43,11 +52,16 @@ class Login extends Component {
 
 		try{
 			var items = {
+				first_name: this.state.first_name,
+				last_name: this.state.last_name,
+				phone: this.state.phone,
 	            email: this.state.email,
-	            password: this.state.password
+	            matric_no: this.state.matric_no,
+	            password: this.state.password,
+	            password_confirmation: this.state.password
 	        }
 
-	        var res = await Auth.login(items);
+	        var res = await Auth.register(items);
 
             if (isEmpty(res))
                 throw new Error('email or password incorrect');
@@ -61,10 +75,10 @@ class Login extends Component {
 
 		}catch(err){
 
-			console.log(err);
+			console.log(err.message);
 
 			Toast.show({
-                text: "email or password incorrect!",
+                text: err.message || "unable to register",
                 buttonText: "Okay"
             });
 			this.handleLoading();
@@ -74,23 +88,57 @@ class Login extends Component {
 	render() {
 		return (
 			<Container>
-				<Image source={require('src/assets/images/bg-login.png')} style={styles.background} />
 				<Content contentContainerStyle={styles.content}>
 					<View style={styles.body}>
 						<View style={styles.titleContainer}>
-							<Text style={styles.title}>{CONSTANTS.CONFIG.APP_NAME}</Text>
+							<Text style={styles.title}>Register</Text>
 							<View style={styles.divider} />
-							<Text style={styles.subtitle}></Text>
+							<Text style={styles.subtitle}>Provide signup details</Text>
 			      		</View>
 
 
 			      		<View style={styles.form}>
+
+			      			<View style={styles.formHorizontal}>
 			      			
-			      			<Item floatingLabel style={styles.item}>
+				      			<Item floatingLabel style={styles.itemHorizontal}>
+									<Label style={styles.label}>First Name</Label>
+									<Input 
+										onChangeText={(first_name) => this.setState({first_name})}
+				                        value={this.state.first_name}
+				                    />
+					            </Item>
+
+					            <Item floatingLabel style={styles.itemHorizontal}>
+									<Label style={styles.label}>Last Name</Label>
+									<Input 
+										onChangeText={(last_name) => this.setState({last_name})}
+				                        value={this.state.last_name}
+				                    />
+					            </Item>
+					        </View>
+
+				            <Item floatingLabel style={styles.item}>
 								<Label style={styles.label}>Email</Label>
 								<Input 
 									onChangeText={(email) => this.setState({email})}
 			                        value={this.state.email}
+			                    />
+				            </Item>
+
+				            <Item floatingLabel style={styles.item}>
+								<Label style={styles.label}>Phone</Label>
+								<Input 
+									onChangeText={(phone) => this.setState({phone})}
+			                        value={this.state.phone}
+			                    />
+				            </Item>
+
+				            <Item floatingLabel style={styles.item}>
+								<Label style={styles.label}>Matric Number</Label>
+								<Input 
+									onChangeText={(matric_no) => this.setState({matric_no})}
+			                        value={this.state.matric_no}
 			                    />
 				            </Item>
 
@@ -109,43 +157,17 @@ class Login extends Component {
 			                    />
 				            </Item>
 
-				            <View style={styles.fpContainer}>
-								<Button transparent onPress={() => this.setState({showPasswordModal: true})} style={{alignSelf: 'flex-end'}}>
-									<Text style={styles.fpText}>Forgot Password?</Text>
-								</Button>
-							</View>
-
 				            <View style={styles.buttonContainer}>
-					            <ButtonLoading rounded theme="primary" block isLoading={this.state.loading} onPress={this.onSubmitButtonPress}>
-									<Text>Sign In</Text>
+					            <ButtonLoading rounded theme="light" block isLoading={this.state.loading} onPress={this.onSubmitButtonPress}>
+									<Text style={{color: 'black'}}>Sign In</Text>
 								</ButtonLoading>
 							</View>
-
-							
 			      		</View>
 			      	</View>
-
-		      		<View style={styles.footer}>
-		            	<Button transparent onPress={() => this.props.navigation.navigate('Register')}>
-							<Text uppercase={false} style={styles.footerText}>Dont have an account?   <Text style={styles.footerLink}>REGISTER</Text> </Text>
-						</Button>
-		            </View>
 				</Content>
-
-				<Modal title='Forgot Password?' isVisible={this.state.showPasswordModal} onClose={() => this.setState({showPasswordModal: false})}>  
-					<View style={{flex: 1, alignItems: 'center', marginVertical: 20, paddingHorizontal : 10}}>
-			    		<Text style={{textAlign: 'center', marginBottom: 10}}>
-			    			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-			    		</Text>
-
-			    		<Text style={{textAlign: 'center' }}>
-							Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-			    		</Text>
-			        </View>
-			    </Modal>
 			</Container>
 		);
 	}
 }
 
-export default Login;
+export default Register;

@@ -1,8 +1,8 @@
-import CONSTANTS from '../../App.constants';
+import CONSTANTS from 'src/App.constants';
 
 //initial state
 const initialState = {
-  };
+ };
 
 //actions
 

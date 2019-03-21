@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "142190927393",
+    "firebase_url": "https://studenttrips-5d78c.firebaseio.com",
+    "project_id": "studenttrips-5d78c",
+    "storage_bucket": "studenttrips-5d78c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142190927393:android:bcade3bfdeb11fd7",
+        "android_client_info": {
+          "package_name": "com.studenttrips"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142190927393-i7bh9vli5hg70v3sbmp502q8uf3v8r38.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.studenttrips",
+            "certificate_hash": "075857dd86fdfd45e5ca0cd05052698e2f255748"
+          }
+        },
+        {
+          "client_id": "142190927393-7k3pjkrd3qkv2ia3eak98m2q135q2fd2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGUhcNT696eBIMGOTXahViYwXuFE8RBhs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142190927393-7k3pjkrd3qkv2ia3eak98m2q135q2fd2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,7 +2,7 @@ import { get, post } from './Api';
 import CONSTANTS from '../App.constants';
 
 
-var url = CONSTANTS.API_ENDPOINT;
+var url = CONSTANTS.ENDPOINT.API;
 
 
 const Auth = {
