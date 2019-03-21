@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
-import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
+import Book from './book';
 import Home from './welcome';
-import SideMenu from './common/components/SideMenu';
+import Profile from './profile';
+import Settings from './settings';
 
 
 const HomeStack = createStackNavigator ({
     Home: {
         screen: Home,
+        navigationOptions: {},
+    },
+    Book: {
+        screen: Book,
         navigationOptions: {},
     }
 }, {
@@ -19,17 +25,39 @@ const HomeStack = createStackNavigator ({
         },
 });
 
-
-const MainStack = createDrawerNavigator ({
-    Home: {
-        screen: HomeStack,
-        navigationOptions: {
-            drawerLabel: 'Home',
-        },
+const SettingsStack = createStackNavigator ({
+    Settings: {
+        screen: Settings,
+        navigationOptions: {},
+    },
+    Profile: {
+        screen: Profile,
+        navigationOptions: {},
     },
 }, {
+        mode: 'screen',
+        initialRouteName: "Settings",
+        navigationOptions: {
+            headerTitleStyle: {
+                fontSize: 17,
+            }
+        },
+});
+
+
+const MainStack = createStackNavigator ({
+    Home: {
+        screen: HomeStack,
+        navigationOptions: {},
+    },
+    Settings: {
+        screen: SettingsStack,
+        navigationOptions: {},
+    },
+}, {
+        mode: 'screen',
         initialRouteName: "Home",
-        contentComponent: SideMenu
+        navigationOptions: { header: null }
 });
 
 export default MainStack;

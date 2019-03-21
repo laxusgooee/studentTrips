@@ -33,7 +33,7 @@ class Home extends Component {
 		return (
 			<Container style={styles.container}>
 				<View style={styles.header}>
-					<Button transparent light>
+					<Button transparent light onPress={() => this.props.navigation.navigate("Book")}>
 						<Icon name="add" style={styles.headerIcon}/>
 					</Button>
 				</View>
@@ -55,7 +55,7 @@ class Home extends Component {
 				</Content>
 
 				<Footer style={styles.footer}>
-					<Button transparent>
+					<Button transparent onPress={() => this.props.navigation.navigate("Settings")}>
 						<Icon name="settings" style={styles.footerIcon}/>
 					</Button>
 

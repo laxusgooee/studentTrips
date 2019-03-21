@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-document-picker')
     compile project(':react-native-firebase')
     compile project(':react-native-spinkit')
     compile fileTree(dir: "libs", include: ["*.jar"])

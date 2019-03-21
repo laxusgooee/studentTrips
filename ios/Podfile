@@ -18,6 +18,8 @@ target 'studentTrips' do
       # Pods for testing
       pod 'react-native-spinkit', :path => '../node_modules/react-native-spinkit'
 
+      pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
+
     end
 
   end

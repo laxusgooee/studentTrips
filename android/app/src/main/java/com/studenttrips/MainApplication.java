@@ -3,6 +3,7 @@ package com.studenttrips;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativedocumentpicker.ReactNativeDocumentPicker;
 import io.invertase.firebase.RNFirebasePackage;
 import com.react.rnspinkit.RNSpinkitPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +26,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeDocumentPicker(),
             new RNFirebasePackage(),
             new RNSpinkitPackage()
       );
