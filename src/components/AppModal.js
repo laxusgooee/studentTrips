@@ -7,7 +7,7 @@ import { Button, Body, Card, CardItem, Container, Content, Icon, Text, View } fr
 const styles = StyleSheet.create({
     content: {
     	borderRadius: 6,
-    	paddingVertical: 20,
+    	paddingVertical: 10,
     	paddingHorizontal: 20,
     	backgroundColor: 'transparent',
     },
@@ -21,18 +21,18 @@ const styles = StyleSheet.create({
     },
 
     header: {
-    	marginBottom: 10,
+    	marginBottom: 5,
     	alignItems: 'center',
     	justifyContent: 'center'
     },
 
     title: {
     	color: '#000',
-    	fontSize: 24
+    	fontSize: 18
     },
 
     body: {
-    	marginTop: 15,
+    	marginTop: 10,
         marginBottom: 10
     },
 
@@ -90,7 +90,7 @@ const standardBody = ({ children, style, showCloseButton = true, onClose }) => {
 const fullBody = ({ title, children, style, onClose, onPress, showCloseButton = true, showHeader = true, showFooter = true}) => {
     return (
         <Container>  
-            <Content contentContainerStyle={[styles.content, styles.full]}>
+            <Content contentContainerStyle={[styles.content, styles.full, style]}>
                 <CloseButton onClose={onClose} />
                 {showHeader && 
                     <View style={styles.header}>

@@ -235,16 +235,17 @@ function toQueryString(obj, urlEncode) {
         path = path || [];
         Object.keys(x).forEach(function (key) {
             if (!x.hasOwnProperty(key)) return;
+            if (!x[key]) return;
 
             var newPath = path.slice();
             newPath.push(key);
 
             var vals = [];
-            if (typeof x[key] == 'object') {
-                vals = flattenObj(x[key], newPath);
-            } else {
-                vals.push({ path: newPath, val: x[key] });
-            }
+              if (typeof x[key] == 'object') {
+                  vals = flattenObj(x[key], newPath);
+              } else {
+                  vals.push({ path: newPath, val: x[key] });
+              }
             vals.forEach(function (obj) {
                 return result.push(obj);
             });

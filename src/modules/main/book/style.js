@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
 	},
 
 	content: {
+		flexGrow: 1,
 		marginTop: 100,
 	},
 
@@ -59,20 +60,48 @@ const styles = StyleSheet.create({
 		paddingVertical: 20,
 		marginHorizontal: 10,
 		paddingHorizontal: 10,
-		backgroundColor: '#fff'
+		backgroundColor: '#fff',
+		height: Dimensions.get('window').height - 250
 	},
 
 	item: {
 		marginBottom: 30,
+		alignItems: 'center',
+	},
+
+	listItem: {
+		marginBottom: 30,
+		flexDirection: 'row',
+		paddingVertical: 15,
+		paddingHorizontal: 10,
+		alignItems: 'center',
+		borderBottomWidth: 1,
+		borderBottomColor: '#cecece',
+		justifyContent: 'space-between'
 	},
 
 	label:{
+		fontSize: 14,
 		color: '#000'
+	},
+
+	suffix: {
+		fontSize: 12,
+		color: '#ccc'
+	},
+
+	value: {
+		//alignSelf: 'flex-start',
+		fontSize: 16,
 	},
 
 	fab: {
 		backgroundColor: CONSTANTS.COLORS.SECONDARY
 	},
+
+	terminalModal: {
+		paddingHorizontal: 0,
+	}
 
 });
 

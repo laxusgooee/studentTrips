@@ -7,7 +7,7 @@ import { Icon, Input, Item, Text, View } from 'native-base';
 var MODE = 'search';
 
 
-const SearchBox = ({ placeholder, color, style, onChangeText, onCancel }) => {
+const SearchBox = ({value, placeholder, color, style, onChangeText, onCancel }) => {
 
 	icon = MODE;
 	placeholder = isEmpty(placeholder)? 'Enter Text...' : placeholder;
@@ -16,6 +16,7 @@ const SearchBox = ({ placeholder, color, style, onChangeText, onCancel }) => {
     	<Item rounded style={[styles.item, style]}>
 			<Input 
 				style={styles.input}
+				value={value}
 				placeholder={placeholder} 
 				onChangeText={(q) => {
 					if(q.length < 2){
